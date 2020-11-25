@@ -1,6 +1,7 @@
 # HOMEWORK 2 - Street View House Number Object Detection
 
 This model is for object detection for the Street Veiw House Numbers dataset.
+This repo is based on this [repo](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch).
 
 ### Hardware
 - Ubuntu 18.04.5 LTS
