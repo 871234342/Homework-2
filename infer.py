@@ -36,12 +36,16 @@ cudnn.benchmark = True
 force_input_size = 896
 
 input_sizes = [512, 640, 768, 896, 1024, 1280, 1280, 1536, 1536]
-input_size = input_sizes[compound_coef] if force_input_size is None else force_input_size
+if force_input_size:
+    input_size = force_input_size
+else:
+    input_size = input_sizes[compound_coef]
 
 obj_list_num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 # model
-model = EfficientDetBackbone(compound_coef=compound_coef, num_classes=len(obj_list_num),
+model = EfficientDetBackbone(compound_coef=compound_coef,
+                             num_classes=len(obj_list_num),
                              ratios=anchor_ratios, scales=anchor_scales)
 try:
     model.load_state_dict(torch.load(load_path, map_location='cpu'))
