@@ -21,6 +21,7 @@ from dataprocessor import DatawAnnotation, NoiseAdder
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 project = 'numbers'
 
+
 class Params:
     def __init__(self, project_file):
         self.params = yaml.safe_load(open(project_file).read())
@@ -120,12 +121,12 @@ def train(project):
         except RuntimeError as e:
             print(f'[Warning] Ignoring {e}')
             print(
-                '[Warning] Don\'t panic if you see this, this might be because'
-                + 'you load a pretrained weights with different number of classes.'
-                 + 'The rest of the weights should be loaded already.')
+                '[Warning] Don\'t panic if you see this, this might be because '
+                + 'you load a pretrained weights with different number of classes. '
+                + 'The rest of the weights should be loaded already.')
 
         print(f'[Info] loaded weights: {os.path.basename(weights_path)},'
-                + 'resuming checkpoint from step: {last_step}')
+              + 'resuming checkpoint from step: {last_step}')
     else:
         last_step = 0
         print('[Info] initializing weights...')
@@ -184,7 +185,7 @@ def train(project):
 
     num_iter_per_epoch = len(training_generator)
 
-    with open('log.txt','a+') as f:
+    with open('log.txt', 'a+') as f:
         f.write(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
     try:
@@ -253,12 +254,11 @@ def train(project):
                     continue
             scheduler.step(np.mean(epoch_loss))
 
-            with open('log.txt','a+') as f:
+            with open('log.txt', 'a+') as f:
                 f.write(
                     'Train. Epoch: {}/{}. Classification loss: {:1.5f}. Regression loss: {:1.5f}. Total loss: {:1.5f}'.format(
                         epoch, params.num_epochs, total_closs, total_rloss,
                         total_closs + total_rloss))
-
 
             # Validation
             if epoch % params.val_interval == 0:
@@ -318,7 +318,6 @@ def train(project):
         save_checkpoint(model,
                         f'efficientdet-d{params.compound_coef}_{epoch}_{step}.pth',
                         params.saved_path)
-
 
 
 def save_checkpoint(model, name, save_path):
