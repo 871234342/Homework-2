@@ -55,3 +55,6 @@ To train, please download the pretrained weight [here](https://drive.google.com/
 
 ### Inference
 for inference, please download the weights file [here](https://drive.google.com/file/d/1t9W1wxUjfBOTtGo0I7-tlpgdlKqvSM01/view?usp=sharing) and put it beside infer.py. Simply run infer.py and predictions.json containing images file names and their corresponding predictions will be created.
+
+### Citation
+[Yet Anothor EfficientDet Pytorch](https://github.com/zylo117/Yet-Another-EfficientDet-Pytorch)
