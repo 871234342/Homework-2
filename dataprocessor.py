@@ -64,7 +64,8 @@ class NoiseAdder(object):
 
     def add_noise(self, img):
         L = random.random() / 2
-        img = img * (1 - L) + L * np.random.randn(img.shape[0], img.shape[1], img.shape[2])
+        img = img * (1 - L) + L * np.random.randn(
+            img.shape[0], img.shape[1], img.shape[2])
         return img
 
     def __call__(self, sample):
@@ -74,26 +75,3 @@ class NoiseAdder(object):
         sample = {'img': image, 'annot': annots}
 
         return sample
-
-
-
-
-
-'''dataset = DatawAnnotation('train/', 'annotation.csv')
-
-sample = dataset[0]
-img = sample['img']
-annot = sample['annot']
-
-print(annot)
-fig, ax = plt.subplots(1)
-ax.imshow(img)
-
-for box in annot:
-    print(box)
-    rect = patches.Rectangle(
-        (box[0], box[3]), box[2] - box[0], box[1] - box[3],
-        linewidth=1, edgecolor='r', facecolor='none')
-    ax.add_patch(rect)
-
-plt.show()'''
